@@ -8,7 +8,7 @@ class IndexView(TemplateView):
 
 
 class LoginView(TemplateView):
-    template_name = ''
+    template_name = 'login.html'
     pass
 
 
