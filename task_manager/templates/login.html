@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -10,37 +12,10 @@
 
 {% load i18n %}
 
-<html>
-  <head>
-    <title>{% translate "Task manager" %} Hexlet</title>
-  </head>
-  <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <a class="navbar-brand" href="/">{% translate "Task manager" %}</a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarToggleExternalContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/users">{% translate "Users" %}</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/login">{% translate "Sing in" %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/create">{% translate "Register" %}</a>
-            </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container wrapper flex-grow-1">
-      
-      <h1 class="my-4">
-        {% translate "Sing in" %}
-      </h1>
+{% block content %}
+<h1 class="my-4">
+  {% translate "Sing in" %}
+</h1>
 <form method="post">
   <input type="hidden" name="csrfmiddlewaretoken" value="LNXHAJp8uWFXDybRFwCqGwTkNUeRQSFCx8AAq2AcIs3CvH4kcfxAUbioebe7MOxa">
   <div class="form-group"><label for="id_username">{% translate "Username" %}</label><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder='{% translate "Username" %}' title="" required="" id="id_username"></div>
@@ -49,11 +24,5 @@
     <input class="btn btn-primary" type="submit" value='{% translate "Enter" %}'>
   </div>
 </form>
-    </div>
-    <footer>
-      <div class="container my-5 pt-4 border-top">
-        <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
-      </div>
-    </footer>
-  </body>
-</html>
+{% endblock content %}
+
