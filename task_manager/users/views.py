@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from task_manager.users.forms import CreateUserForm
 from task_manager.users.models import User
@@ -16,8 +17,11 @@ class UserCreateView(CreateView):
     success_message = 'User created successfully!'
 
 class UserUpdateView(UpdateView):
-    pass
+    model = User
+    template_name = 'form.html'
+    form_class = CreateUserForm
+    success_url = '/users'
+    success_message = 'User updated successfully!'
 
 class UserDeleteView(DeleteView):
     pass
-
