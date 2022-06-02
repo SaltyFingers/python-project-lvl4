@@ -24,4 +24,8 @@ class UserUpdateView(UpdateView):
     success_message = 'User updated successfully!'
 
 class UserDeleteView(DeleteView):
-    pass
+    model = User
+    template_name = 'delete.html'
+    success_url = '/users'
+    
+    

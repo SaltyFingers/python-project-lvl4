@@ -1,17 +1,7 @@
 {% extends "base.html" %}
 
-{# Load the tag library #}
 {% load bootstrap4 %}
-
-{% load static %}
-
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
-
 {% load i18n %}
 
 {% block content %}
@@ -37,7 +27,7 @@
         <td>
             <a href="{% url 'users:update' user.id %}">{% translate "Change" %}</a>
             <br>
-            <a href="#">{% translate "Delete" %}</a>
+            <a method="post" href="{% url 'users:delete' user.id %}">{% translate "Delete" %}</a>
         </td>
     </tr>
     {% endfor %}
