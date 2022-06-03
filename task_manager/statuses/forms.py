@@ -1,0 +1,10 @@
+from dataclasses import field
+from django import forms
+from .models import Status
+
+
+class StatusForm(forms.ModelForm):
+
+    class Meta:
+        model = Status
+        fields = ['name', 'created_at']
