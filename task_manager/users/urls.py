@@ -1,6 +1,5 @@
-from django.contrib import admin
 from django.urls import path
-from task_manager.users.views import UsersView, UserCreateView, UserUpdateView, UserDeleteView
+from .views import UsersView, UserCreateView, UserUpdateView, UserDeleteView
 
 
 app_name='users'
