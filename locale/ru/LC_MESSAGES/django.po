@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-08 18:35+0000\n"
+"POT-Creation-Date: 2022-06-09 20:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/labels/templates/labels.html:9
+#: task_manager/labels/templates/labels.html:9 task_manager/labels/views.py:28
 msgid "Create label"
 msgstr "Создать метку"
 
@@ -54,19 +54,70 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
+#: task_manager/labels/views.py:23
+msgid "Label created successfully!"
+msgstr "Метка успешно создана!"
+
+#: task_manager/labels/views.py:29 task_manager/statuses/views.py:29
+#: task_manager/tasks/views.py:32
+msgid "Create"
+msgstr "Создать"
+
+#: task_manager/labels/views.py:39
+msgid "Label updated successfully!"
+msgstr "Метка успешно изменена!"
+
+#: task_manager/labels/views.py:44
+msgid "Update label"
+msgstr "Изменение метки"
+
+#: task_manager/labels/views.py:45 task_manager/statuses/views.py:45
+#: task_manager/tasks/views.py:48 task_manager/users/views.py:45
+msgid "Update"
+msgstr "Изменить"
+
+#: task_manager/labels/views.py:54
+msgid "Label deleted successfully!"
+msgstr "Метка успешно удалена!"
+
+#: task_manager/labels/views.py:59
+msgid "Delete label"
+msgstr "Удалить метку"
+
 #: task_manager/statuses/templates/statuses.html:8 templates/base.html:31
 msgid "Statuses"
 msgstr "Статусы"
 
 #: task_manager/statuses/templates/statuses.html:9
+#: task_manager/statuses/views.py:28
 msgid "Create status"
 msgstr "Создать статус"
+
+#: task_manager/statuses/views.py:23
+msgid "Status created successfully!"
+msgstr "Статус успешно создан!"
+
+#: task_manager/statuses/views.py:39
+msgid "Status updated successfully!"
+msgstr "Статус успешно изменен!"
+
+#: task_manager/statuses/views.py:44
+msgid "Update status"
+msgstr "Изменение статус"
+
+#: task_manager/statuses/views.py:54
+msgid "Status deleted successfully!"
+msgstr "Статус успешно удален!"
+
+#: task_manager/statuses/views.py:59
+msgid "Delete status"
+msgstr "Удаление статуса"
 
 #: task_manager/tasks/templates/tasks.html:8 templates/base.html:37
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/tasks/templates/tasks.html:9
+#: task_manager/tasks/templates/tasks.html:9 task_manager/tasks/views.py:31
 msgid "Create task"
 msgstr "Создать задачу"
 
@@ -82,7 +133,28 @@ msgstr "Автор"
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/users/templates/users.html:8 templates/base.html:27
+#: task_manager/tasks/views.py:21
+msgid "Task created successfully!"
+msgstr "Задача успешно создана!"
+
+#: task_manager/tasks/views.py:42
+msgid "Task updated successfully!"
+msgstr "Задача успешно изменена!"
+
+#: task_manager/tasks/views.py:47
+msgid "Update task"
+msgstr "Изменить задачу"
+
+#: task_manager/tasks/views.py:57
+msgid "Task deleted successfully!"
+msgstr "Задача успешно удалена!"
+
+#: task_manager/tasks/views.py:62
+msgid "Delete task"
+msgstr "Удаление задачи"
+
+#: task_manager/users/templates/users.html:8 task_manager/users/views.py:18
+#: templates/base.html:27
 msgid "Users"
 msgstr "Пользователи"
 
@@ -98,6 +170,34 @@ msgstr "Полное имя"
 msgid "Creation date"
 msgstr "Дата создания"
 
+#: task_manager/users/views.py:25
+msgid "User created successfully!"
+msgstr "Пользователь создан изменен!"
+
+#: task_manager/users/views.py:29
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/users/views.py:30 templates/base.html:51
+msgid "Register"
+msgstr "Зарегестрировать"
+
+#: task_manager/users/views.py:40
+msgid "User updated successfully!"
+msgstr "Пользователь успешно изменен!"
+
+#: task_manager/users/views.py:44
+msgid "Update user"
+msgstr "Изменить пользователя"
+
+#: task_manager/users/views.py:53
+msgid "User deleted successfully!"
+msgstr "Пользователь успешно удален!"
+
+#: task_manager/users/views.py:57
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
 #: templates/base.html:15 templates/base.html:20
 msgid "Task manager"
 msgstr "Менеджер задач"
@@ -110,14 +210,6 @@ msgstr "Выход"
 msgid "Sing in"
 msgstr "Вход"
 
-#: templates/base.html:51
-msgid "Register"
-msgstr "Регистрация"
-
-#: templates/delete.html:14
-msgid "Deletion"
-msgstr "Удаление"
-
 #: templates/delete.html:17
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что ходите удалить"
@@ -126,14 +218,14 @@ msgstr "Вы уверены, что ходите удалить"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/index.html:21
+#: templates/index.html:13
 msgid "Hello from Hexlet!"
 msgstr "Привет от Хекслета!"
 
-#: templates/index.html:22
+#: templates/index.html:14
 msgid "Practical programming courses"
 msgstr "Практические курсы по программированию"
 
-#: templates/index.html:24
+#: templates/index.html:16
 msgid "Learn more"
 msgstr "Узнать больше"

@@ -11,7 +11,7 @@
       <form method="post">
         {% csrf_token %}
         <h1 class="my-4">
-          {% translate "Deletion" %}
+          {{ title }}
         </h1>
         <p>
           {% translate "Are you sure you want to delete" %} 
@@ -22,7 +22,7 @@
           {% endif %}
         </p>
         <button class="btn-danger" type="submit">
-          {% translate "Yes, delete" %}
+          {% translate "Yes, delete"%}
         </button>
       </form>
     </div>

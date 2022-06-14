@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from task_manager.users.forms import CreateUserForm
-from task_manager.users.models import User
+
+from .forms import CreateUserForm
+from .models import User
 
 
 # Create your views here.
@@ -11,22 +13,47 @@ class UsersView(ListView):
     model = User
     context_object_name = 'users'
 
-class UserCreateView(CreateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Users')
+        return context
+
+class UserCreateView(SuccessMessageMixin, CreateView):
     template_name = 'form.html'
     form_class = CreateUserForm
     success_url = '/login'
-    success_message = 'User created successfully!'
+    success_message = _('User created successfully!')
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Registration')
+        context['button_text'] = _('Register')
+        return context
+
+
+class UserUpdateView(SuccessMessageMixin,
+                     LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'form.html'
     form_class = CreateUserForm
     success_url = '/users'
-    success_message = 'User updated successfully!'
+    success_message = _('User updated successfully!')
 
-class UserDeleteView(LoginRequiredMixin, DeleteView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Update user')
+        context['button_text'] = _('Update')
+        return context
+
+class UserDeleteView(SuccessMessageMixin, 
+                     LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'delete.html'
     success_url = '/users'
-    
+    success_message = _('User deleted successfully!')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Delete user')
+        return context
     

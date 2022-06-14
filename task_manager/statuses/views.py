@@ -1,4 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from .forms import StatusForm
@@ -6,27 +8,53 @@ from .models import Status
 
 # Create your views here.
 
-class StatusesView(ListView):
+class StatusesView(LoginRequiredMixin, ListView):
     template_name = 'statuses.html'
     model = Status
     context_object_name = 'statuses'
 
 
-class StatusCreateView(LoginRequiredMixin, CreateView):
+class StatusCreateView(LoginRequiredMixin,
+                       SuccessMessageMixin, CreateView):
     template_name = 'form.html'
     model = Status
     form_class = StatusForm
     success_url = '/statuses'
+    success_message = _('Status created successfully!')
 
 
-class StatusUpdateView(LoginRequiredMixin, UpdateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Create status')
+        context['button_text'] = _('Create')
+        return context
+
+
+class StatusUpdateView(LoginRequiredMixin,
+                       SuccessMessageMixin, UpdateView):
     model = Status
     template_name = 'form.html'
     form_class = StatusForm
     success_url = '/statuses'
+    success_message = _('Status updated successfully!')
 
 
-class StatusDeleteView(LoginRequiredMixin, DeleteView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Update status')
+        context['button_text'] = _('Update')
+        return context
+
+
+class StatusDeleteView(LoginRequiredMixin,
+                       SuccessMessageMixin, DeleteView):
     model = Status
     template_name = 'delete.html'
     success_url = '/statuses'
+    success_message = _('Status deleted successfully!')
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Delete status')
+        return context
