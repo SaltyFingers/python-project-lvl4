@@ -9,18 +9,28 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('tasks', '0001_initial'),
+        ("tasks", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task',
-            name='author',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='tasks', to=settings.AUTH_USER_MODEL),
+            model_name="task",
+            name="author",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="tasks",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='executor',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='works_on', to=settings.AUTH_USER_MODEL),
+            model_name="task",
+            name="executor",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="works_on",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

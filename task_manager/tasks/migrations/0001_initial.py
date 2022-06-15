@@ -10,21 +10,51 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('statuses', '0001_initial'),
+        ("statuses", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.CharField(max_length=500)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='tasks', to=settings.AUTH_USER_MODEL)),
-                ('executor', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='works_on', to=settings.AUTH_USER_MODEL)),
-                ('status', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='tasks', to='statuses.status')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.CharField(max_length=500)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="tasks",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "executor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="works_on",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "status",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="tasks",
+                        to="statuses.status",
+                    ),
+                ),
             ],
         ),
     ]

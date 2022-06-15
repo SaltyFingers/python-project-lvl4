@@ -8,53 +8,48 @@ from .models import Status
 
 # Create your views here.
 
+
 class StatusesView(LoginRequiredMixin, ListView):
-    template_name = 'statuses.html'
+    template_name = "statuses.html"
     model = Status
-    context_object_name = 'statuses'
+    context_object_name = "statuses"
 
 
-class StatusCreateView(LoginRequiredMixin,
-                       SuccessMessageMixin, CreateView):
-    template_name = 'form.html'
+class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    template_name = "form.html"
     model = Status
     form_class = StatusForm
-    success_url = '/statuses'
-    success_message = _('Status created successfully!')
-
+    success_url = "/statuses"
+    success_message = _("Status created successfully!")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Create status')
-        context['button_text'] = _('Create')
+        context["title"] = _("Create status")
+        context["button_text"] = _("Create")
         return context
 
 
-class StatusUpdateView(LoginRequiredMixin,
-                       SuccessMessageMixin, UpdateView):
+class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
-    template_name = 'form.html'
+    template_name = "form.html"
     form_class = StatusForm
-    success_url = '/statuses'
-    success_message = _('Status updated successfully!')
-
+    success_url = "/statuses"
+    success_message = _("Status updated successfully!")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Update status')
-        context['button_text'] = _('Update')
+        context["title"] = _("Update status")
+        context["button_text"] = _("Update")
         return context
 
 
-class StatusDeleteView(LoginRequiredMixin,
-                       SuccessMessageMixin, DeleteView):
+class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Status
-    template_name = 'delete.html'
-    success_url = '/statuses'
-    success_message = _('Status deleted successfully!')
-
+    template_name = "delete.html"
+    success_url = "/statuses"
+    success_message = _("Status deleted successfully!")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Delete status')
+        context["title"] = _("Delete status")
         return context
