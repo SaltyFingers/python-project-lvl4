@@ -12,6 +12,11 @@ class TasksView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = "tasks"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("Tasks")
+        return context
+
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"

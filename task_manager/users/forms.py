@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
 
-class CreateUserForm(UserCreationForm):
+class UserForm(UserCreationForm):
     class Meta:
         model = User
         fields = [

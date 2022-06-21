@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from task_manager.users.models import User
 from task_manager.labels.models import Label
+from task_manager.tasks.models import Task
 
 # Create your tests here.
 OK_CODE = 200
@@ -83,7 +84,7 @@ class TestLabels(TestCase):
         self.client.force_login(self.user1)
 
         # with self.assertRaises(Exception):
-        #     self.client.post(reverse("statuses:delete", args=(self.status4.id,)),
+        #     self.client.post(reverse("labels:delete", args=(self.label4.id,)),
         #                      follow=True)
 
         # Task.objects.all().delete()

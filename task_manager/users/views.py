@@ -3,7 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from .forms import CreateUserForm
+from .forms import UserForm
 from .models import User
 
 
@@ -21,7 +21,7 @@ class UsersView(ListView):
 
 class UserCreateView(SuccessMessageMixin, CreateView):
     template_name = "form.html"
-    form_class = CreateUserForm
+    form_class = UserForm
     success_url = "/login"
     success_message = _("User created successfully!")
 
@@ -35,7 +35,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = User
     template_name = "form.html"
-    form_class = CreateUserForm
+    form_class = UserForm
     success_url = "/users"
     success_message = _("User updated successfully!")
 
