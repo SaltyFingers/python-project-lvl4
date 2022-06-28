@@ -15,7 +15,7 @@ class Task(models.Model):
     status = models.ForeignKey(
         Status, on_delete=models.PROTECT, null=True, related_name="tasks"
     )
-    label = models.ManyToManyField(Label,related_name="tasks", null=True)
+    labels = models.ManyToManyField(Label,related_name="tasks", null=True)
     executor = models.ForeignKey(
         User, on_delete=models.PROTECT, null=True, related_name="works_on"
     )

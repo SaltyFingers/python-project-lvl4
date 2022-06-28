@@ -14,7 +14,7 @@ lint:
 	poetry run flake8 task_manager
 
 locale:
-	python3 manage.py makemessages -l ru
+	poetry run python3 manage.py makemessages -l ru
 
 compile:
 	poetry run django-admin compilemessages

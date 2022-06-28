@@ -1,22 +1,37 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
+from django_filters.views import FilterView
+from .forms import FilterTask
+
 
 from .forms import TaskForm
 from .models import Task
 
 
-class TasksView(LoginRequiredMixin, ListView):
+class TasksView(LoginRequiredMixin, FilterView):
     template_name = "tasks.html"
     model = Task
+    filterset_class = FilterTask
     context_object_name = "tasks"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Tasks")
+        context["button_text"] = _("Show")
         return context
 
+
+class ViewTaskView(LoginRequiredMixin, DetailView):
+    template_name = "view_task.html"
+    model = Task
+    context_object_name = "task"
+
+    def get_context_data(self, **kwargs):
+        context = super(ViewTaskView, self).get_context_data()
+        context["labels"] = self.get_object().labels.all()
+        return context
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"

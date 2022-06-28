@@ -62,8 +62,8 @@ class TestTasks(TestCase):
 
         created_task = Task.objects.last()
 
-        self.assertTrue(response.status_code == OK_CODE)
         self.assertRedirects(response, "/tasks/")
+        self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("Task created successfully!"))
         self.assertTrue(created_task.id == 4)
         self.assertTrue(created_task.autor == self.user1.name)
@@ -95,16 +95,6 @@ class TestTasks(TestCase):
 
     def test_delete_task(self):
         self.client.force_login(self.user3)
-
-        # with self.assertRaises(Exception):
-        #     self.client.post(
-        #         reverse("tasks:delete", args=(self.task1.id,)), follow=True
-        #     )
-
-        # Status.objects.all().delete()
-        # Label.objects.all().delete()
-        # User.objects.get(id=self.user2.id)
-
 
         response = self.client.post(
             reverse("tasks:delete", args=(self.task1.id,)), follow=True
