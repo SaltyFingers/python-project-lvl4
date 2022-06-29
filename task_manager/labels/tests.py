@@ -23,7 +23,7 @@ class TestLabels(TestCase):
         self.label1 = Label.objects.get(pk=1)
         self.label2 = Label.objects.get(pk=2)
         self.label3 = Label.objects.get(pk=3)
-        self.label4 = Label.objects.get(pk=4)
+        self.label4 = Label.objects.get(pk=5)
 
     def test_labels_list(self):
         self.client.force_login(self.user1)
@@ -31,20 +31,21 @@ class TestLabels(TestCase):
         response = self.client.get(reverse("labels:list"))
         labels_list = list(response.context["labels"])
 
-        label1, label2, label3, label4 = labels_list
+        test_label1, test_label2, test_label3, test_label4 = labels_list
 
         self.assertTrue(response.status_code == OK_CODE)
-        self.assertTrue(label1.id == 1)
-        self.assertTrue(label1.name == "Important")
 
-        self.assertTrue(label2.id == 2)
-        self.assertTrue(label2.name == "Just label")
+        self.assertTrue(test_label1.id == self.label1.id)
+        self.assertTrue(test_label1.name == self.label1.name)
 
-        self.assertTrue(label3.id == 3)
-        self.assertTrue(label3.name == "Метка")
+        self.assertTrue(test_label2.id == self.label2.id)
+        self.assertTrue(test_label2.name == self.label2.name)
 
-        self.assertTrue(label4.id == 4)
-        self.assertTrue(label4.name == "LABEL")
+        self.assertTrue(test_label3.id == self.label3.id)
+        self.assertTrue(test_label3.name == self.label3.name)
+
+        self.assertTrue(test_label4.id == self.label4.id)
+        self.assertTrue(test_label4.name == self.label4.name)
 
     def test_create_labels(self):
         self.client.force_login(self.user1)
@@ -54,12 +55,11 @@ class TestLabels(TestCase):
         }
         response = self.client.post(reverse("labels:create"), new_label, follow=True)
 
-        created_label = Label.objects.get(pk=5)
-
+        created_label = Label.objects.last()
         self.assertRedirects(response, "/labels/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("Label created successfully!"))
-        self.assertTrue(created_label.id == 5)
+        self.assertTrue(created_label.id == 6)
         self.assertTrue(created_label.name == "New Label")
 
     def test_update_labels(self):

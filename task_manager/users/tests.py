@@ -20,17 +20,17 @@ class TestUsers(TestCase):
         response = self.client.get(reverse("users:list"))
         users_list = list(response.context["users"])
 
-        user1, user2, user3 = users_list
+        test_user1, test_user2, test_user3 = users_list
 
         self.assertTrue(response.status_code == OK_CODE)
-        self.assertTrue(user1.id == 1)
-        self.assertTrue(user1.username == "IvanIvan")
+        self.assertTrue(test_user1.id == self.user1.id)
+        self.assertTrue(test_user1.username == self.user1.username)
 
-        self.assertTrue(user2.id == 2)
-        self.assertTrue(user2.username == "xXxJONNYxXx")
+        self.assertTrue(test_user2.id == self.user2.id)
+        self.assertTrue(test_user2.username == self.user2.username)
 
-        self.assertTrue(user3.id == 3)
-        self.assertTrue(user3.username == "Chicharito")
+        self.assertTrue(test_user3.id == self.user3.id)
+        self.assertTrue(test_user3.username == self.user3.username)
 
     def test_create_user(self):
         new_user = {
@@ -42,7 +42,7 @@ class TestUsers(TestCase):
         }
         response = self.client.post(reverse("users:create"), new_user, follow=True)
 
-        created_user = User.objects.get(pk=4)
+        created_user = User.objects.last()
 
         self.assertRedirects(response, "/login")
         self.assertTrue(response.status_code == OK_CODE)

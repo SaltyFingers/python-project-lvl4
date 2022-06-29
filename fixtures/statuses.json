@@ -3,32 +3,32 @@
     "model": "statuses.status",
     "pk": 1,
     "fields": {
-        "name": "In progress",
-        "created_at": "2022-06-08T19:16:16.623Z"
+        "name": "Status_1",
+        "created_at": "2022-06-29T16:21:36.818Z"
     }
 },
 {
     "model": "statuses.status",
     "pk": 2,
     "fields": {
-        "name": "Testing",
-        "created_at": "2022-06-08T19:17:30.425Z"
+        "name": "Status_2",
+        "created_at": "2022-06-29T16:22:03.453Z"
     }
 },
 {
     "model": "statuses.status",
     "pk": 3,
     "fields": {
-        "name": "Статус",
-        "created_at": "2022-06-08T19:18:52.723Z"
+        "name": "Status_3",
+        "created_at": "2022-06-29T16:22:26.499Z"
     }
 },
 {
     "model": "statuses.status",
     "pk": 4,
     "fields": {
-        "name": "Status",
-        "created_at": "2022-06-08T19:19:37.235Z"
+        "name": "Status_4",
+        "created_at": "2022-06-29T16:23:04.664Z"
     }
 }
 ]

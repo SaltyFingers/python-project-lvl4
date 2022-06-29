@@ -26,20 +26,21 @@ class TestStatuses(TestCase):
         response = self.client.get(reverse("statuses:list"))
         statuses_list = list(response.context["statuses"])
 
-        status1, status2, status3, status4 = statuses_list
+        test_status1, test_status2, test_status3, test_status4 = statuses_list
 
-        self.assertTrue(response.status_code == 200)
-        self.assertTrue(status1.id == 1)
-        self.assertTrue(status1.name == "In progress")
+        self.assertTrue(response.status_code == OK_CODE)
 
-        self.assertTrue(status2.id == 2)
-        self.assertTrue(status2.name == "Testing")
+        self.assertTrue(test_status1.id == self.status1.id)
+        self.assertTrue(test_status1.name == self.status1.name)
 
-        self.assertTrue(status3.id == 3)
-        self.assertTrue(status3.name == "Статус")
+        self.assertTrue(test_status2.id == self.status2.id)
+        self.assertTrue(test_status2.name == self.status2.name)
 
-        self.assertTrue(status4.id == 4)
-        self.assertTrue(status4.name == "Status")
+        self.assertTrue(test_status3.id == self.status3.id)
+        self.assertTrue(test_status3.name == self.status3.name)
+
+        self.assertTrue(test_status4.id == self.status4.id)
+        self.assertTrue(test_status4.name == self.status4.name)
 
     def test_create_status(self):
         self.client.force_login(self.user1)
