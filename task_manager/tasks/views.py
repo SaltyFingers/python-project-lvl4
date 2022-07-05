@@ -1,12 +1,13 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 from django_filters.views import FilterView
-from .forms import FilterTask
 
-
-from .forms import TaskForm
+from .forms import FilterTask, TaskForm
 from .models import Task
 
 
@@ -70,6 +71,14 @@ class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = "delete.html"
     success_url = "/tasks"
     success_message = _("Task deleted successfully!")
+
+    def form_valid(self, form):
+        if self.request.user == self.get_object().author:
+            super(TaskDeleteView, self).form_valid(form)
+        else:
+            messages.add_message(self.request, messages.ERROR,
+                                 _("Task can only be deleted by it's author!"))
+        return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

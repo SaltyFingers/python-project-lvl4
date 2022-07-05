@@ -103,6 +103,17 @@ class TestTasks(TestCase):
         self.assertFalse(updated_task.executor == old_executor)
         self.assertTrue(updated_task.name == "Not easy task")
 
+    def test_delete_task_by_another_user(self):
+        self.client.force_login(self.user1)
+
+        response = self.client.post(
+            reverse("tasks:delete", args=(self.task1.id,)), follow=True
+        )
+
+        self.assertRedirects(response, "/tasks/")
+        self.assertTrue(Task.objects.filter(id=self.task1.id).exists())
+        self.assertContains(response, _("Task can only be deleted by it's author!"))
+    
     def test_delete_task(self):
         self.client.force_login(self.user3)
 

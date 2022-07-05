@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-28 20:59+0000\n"
+"POT-Creation-Date: 2022-07-05 19:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr "Дата создания"
 #: task_manager/statuses/templates/statuses.html:26
 #: task_manager/statuses/views.py:42 task_manager/tasks/templates/tasks.html:43
 #: task_manager/tasks/templates/view_task.html:47
-#: task_manager/tasks/views.py:64 task_manager/users/templates/users.html:28
+#: task_manager/tasks/views.py:65 task_manager/users/templates/users.html:28
 #: task_manager/users/views.py:45
 msgid "Update"
 msgstr "Изменить"
@@ -73,7 +73,7 @@ msgid "Label deleted successfully!"
 msgstr "Метка успешно удалена!"
 
 #: task_manager/labels/views.py:27 task_manager/statuses/views.py:28
-#: task_manager/tasks/views.py:50
+#: task_manager/tasks/views.py:51
 msgid "Create"
 msgstr "Создать"
 
@@ -94,15 +94,15 @@ msgstr "Статусы"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: task_manager/statuses/tests.py:56 task_manager/statuses/views.py:23
+#: task_manager/statuses/tests.py:57 task_manager/statuses/views.py:23
 msgid "Status created successfully!"
 msgstr "Статус успешно создан!"
 
-#: task_manager/statuses/tests.py:76 task_manager/statuses/views.py:37
+#: task_manager/statuses/tests.py:77 task_manager/statuses/views.py:37
 msgid "Status updated successfully!"
 msgstr "Статус успешно изменен!"
 
-#: task_manager/statuses/tests.py:97 task_manager/statuses/views.py:50
+#: task_manager/statuses/tests.py:98 task_manager/statuses/views.py:50
 msgid "Status deleted successfully!"
 msgstr "Статус успешно удален!"
 
@@ -142,12 +142,12 @@ msgstr "Метка"
 msgid "Only my taks"
 msgstr "Только мои задачи"
 
-#: task_manager/tasks/templates/tasks.html:8 task_manager/tasks/views.py:21
+#: task_manager/tasks/templates/tasks.html:8 task_manager/tasks/views.py:22
 #: templates/base.html:37
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/tasks/templates/tasks.html:9 task_manager/tasks/views.py:49
+#: task_manager/tasks/templates/tasks.html:9 task_manager/tasks/views.py:50
 msgid "Create task"
 msgstr "Создать задачу"
 
@@ -160,27 +160,31 @@ msgstr "Автор"
 msgid "View task"
 msgstr "Просмотр задачи"
 
-#: task_manager/tasks/tests.py:67 task_manager/tasks/views.py:41
+#: task_manager/tasks/tests.py:77 task_manager/tasks/views.py:42
 msgid "Task created successfully!"
 msgstr "Задача успешно создана!"
 
-#: task_manager/tasks/tests.py:91 task_manager/tasks/views.py:59
+#: task_manager/tasks/tests.py:101 task_manager/tasks/views.py:60
 msgid "Task updated successfully!"
 msgstr "Задача успешно изменена!"
 
-#: task_manager/tasks/tests.py:108 task_manager/tasks/views.py:72
+#: task_manager/tasks/tests.py:115 task_manager/tasks/views.py:80
+msgid "Task can only be deleted by it's author!"
+msgstr "Задача может быть удалена только автором!"
+
+#: task_manager/tasks/tests.py:129 task_manager/tasks/views.py:73
 msgid "Task deleted successfully!"
 msgstr "Задача успешно удалена!"
 
-#: task_manager/tasks/views.py:22
+#: task_manager/tasks/views.py:23
 msgid "Show"
 msgstr "Показать"
 
-#: task_manager/tasks/views.py:63
+#: task_manager/tasks/views.py:64
 msgid "Update task"
 msgstr "Изменить задачу"
 
-#: task_manager/tasks/views.py:76
+#: task_manager/tasks/views.py:85
 msgid "Delete task"
 msgstr "Удаление задачи"
 
