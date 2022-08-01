@@ -10,6 +10,7 @@ from task_manager.tasks.forms import FilterTask
 # Create your tests here.
 OK_CODE = 200
 
+
 class TestTasks(TestCase):
 
     fixtures = ["users.json", "statuses.json", "tasks.json", "labels.json"]
@@ -35,7 +36,7 @@ class TestTasks(TestCase):
 
     def test_tasks_list(self):
         self.client.force_login(self.user1)
-        
+
         response = self.client.get(reverse("tasks:list"))
         tasks_list = list(response.context["tasks"])
 
@@ -44,18 +45,18 @@ class TestTasks(TestCase):
         self.assertTrue(response.status_code == OK_CODE)
         self.assertTrue(test_task1.id == self.task1.id)
         self.assertTrue(test_task1.name == self.task1.name)
-        self.assertTrue(test_task1.author.username == self.task1.author.username)
-        self.assertTrue(test_task1.executor.username == self.task1.executor.username)
+        self.assertTrue(test_task1.author.username == self.task1.author.username)  # noqa
+        self.assertTrue(test_task1.executor.username == self.task1.executor.username)  # noqa
 
         self.assertTrue(test_task2.id == self.task2.id)
         self.assertTrue(test_task2.name == self.task2.name)
-        self.assertTrue(test_task2.author.username == self.task2.author.username)
-        self.assertTrue(test_task2.executor.username == self.task2.executor.username)
+        self.assertTrue(test_task2.author.username == self.task2.author.username)  # noqa
+        self.assertTrue(test_task2.executor.username == self.task2.executor.username)  # noqa
 
         self.assertTrue(test_task3.id == self.task3.id)
         self.assertTrue(test_task3.name == self.task3.name)
-        self.assertTrue(test_task3.author.username == self.task3.author.username)
-        self.assertTrue(test_task3.executor.username == self.task3.executor.username)
+        self.assertTrue(test_task3.author.username == self.task3.author.username)  # noqa
+        self.assertTrue(test_task3.executor.username == self.task3.executor.username)  # noqa
 
     def test_create_task(self):
         self.client.force_login(self.user1)
@@ -68,7 +69,8 @@ class TestTasks(TestCase):
             "executor": self.user2.username,
         }
 
-        response = self.client.post(reverse("tasks:create"), new_task, follow=True)
+        response = self.client.post(reverse("tasks:create"),
+                                    new_task, follow=True)
 
         created_task = Task.objects.last()
 
@@ -81,7 +83,7 @@ class TestTasks(TestCase):
     def test_update_task(self):
         self.client.force_login(self.user3)
         task = self.task1
-        
+
         updated_data = {
             "name": "Not easy task",
             "executor": self.user1.username,
@@ -91,7 +93,9 @@ class TestTasks(TestCase):
         old_executor = task.executor
 
         response = self.client.post(
-            reverse("tasks:update", args=(task.id,)), updated_data, follow=True
+            reverse("tasks:update", args=(task.id,)),
+            updated_data,
+            follow=True
         )
 
         updated_task = Task.objects.get(id=task.id)
@@ -112,8 +116,9 @@ class TestTasks(TestCase):
 
         self.assertRedirects(response, "/tasks/")
         self.assertTrue(Task.objects.filter(id=self.task1.id).exists())
-        self.assertContains(response, _("Task can only be deleted by it's author!"))
-    
+        self.assertContains(response,
+                            _("Task can only be deleted by it's author!"))
+
     def test_delete_task(self):
         self.client.force_login(self.user3)
 
@@ -151,4 +156,3 @@ class TestTasks(TestCase):
         f = FilterTask(data={"labels": self.label4.id}, queryset=qs)
         self.assertTrue(self.task1 and self.task2 in f.qs)
         self.assertFalse(self.task3 in f.qs)
-

@@ -1,17 +1,13 @@
 from django.test import TestCase
-
-# Create your tests here.
-
-
-from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from task_manager.users.models import User
 from task_manager.labels.models import Label
-from task_manager.tasks.models import Task
+from task_manager.users.models import User
 
 # Create your tests here.
+
 OK_CODE = 200
+
 
 class TestLabels(TestCase):
 
@@ -53,7 +49,8 @@ class TestLabels(TestCase):
         new_label = {
             "name": "New Label",
         }
-        response = self.client.post(reverse("labels:create"), new_label, follow=True)
+        response = self.client.post(reverse("labels:create"),
+                                    new_label, follow=True)
 
         created_label = Label.objects.last()
         self.assertRedirects(response, "/labels/")
@@ -70,7 +67,9 @@ class TestLabels(TestCase):
         }
 
         response = self.client.post(
-            reverse("labels:update", args=(self.label4.id,)), updated_data, follow=True
+            reverse("labels:update", args=(self.label4.id,)),
+            updated_data,
+            follow=True
         )
 
         updated_label = Label.objects.get(id=self.label4.id)
@@ -83,11 +82,6 @@ class TestLabels(TestCase):
     def test_delete_labels(self):
         self.client.force_login(self.user1)
 
-        # with self.assertRaises(Exception):
-        #     self.client.post(reverse("labels:delete", args=(self.label4.id,)),
-        #                      follow=True)
-
-        # Task.objects.all().delete()
         response = self.client.post(
             reverse("labels:delete", args=(self.label4.id,)), follow=True
         )

@@ -7,6 +7,7 @@ from task_manager.users.models import User
 # Create your tests here.
 OK_CODE = 200
 
+
 class TestUsers(TestCase):
 
     fixtures = ["users.json", "statuses.json", "tasks.json", "labels.json"]
@@ -40,7 +41,8 @@ class TestUsers(TestCase):
             "password1": "qwerty12345",
             "password2": "qwerty12345",
         }
-        response = self.client.post(reverse("users:create"), new_user, follow=True)
+        response = self.client.post(reverse("users:create"),
+                                    new_user, follow=True)
 
         created_user = User.objects.last()
 

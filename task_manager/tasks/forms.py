@@ -17,43 +17,38 @@ class TaskForm(forms.ModelForm):
             "description": _("Description"),
             "status": _("Status"),
             "executor": _("Executor"),
-            "labels": _("Labels")
-            }
+            "labels": _("Labels"),
+        }
 
 
 class FilterTask(django_filters.FilterSet):
 
-    all_statuses = Status.objects.values_list('id', 'name').all()
+    all_statuses = Status.objects.values_list("id", "name").all()
     status = django_filters.filters.ChoiceFilter(
-        label = _("Status"),
-        choices=all_statuses
+        label=_("Status"), choices=all_statuses
     )
-    
-    all_executors = User.objects.values_list('id', 'username').all()
+
+    all_executors = User.objects.values_list("id", "username").all()
     executor = django_filters.filters.ChoiceFilter(
-        label = _("Executor"),
-        choices=all_executors
+        label=_("Executor"), choices=all_executors
     )
-    
-    all_labels = Label.objects.values_list('id', 'name').all()
-    label = django_filters.filters.ChoiceFilter(
-        label = _("Label"),
-        choices=all_labels
-    )
+
+    all_labels = Label.objects.values_list("id", "name").all()
+    label = django_filters.filters.ChoiceFilter(label=_("Label"),
+                                                choices=all_labels)
 
     self_filter = django_filters.filters.BooleanFilter(
-        label = _("Only my taks"),
+        label=_("Only my taks"),
         widget=forms.CheckboxInput(),
         method="filter_my_tasks"
-
-    )
+        )
 
     def filter_my_tasks(self, queryset, name, value):
         if value:
             return queryset.filter(author=self.request.user)
         else:
             return queryset
-    
+
     class Meta:
         model = Task
-        fields = ['status', 'executor', 'label']
+        fields = ["status", "executor", "label"]

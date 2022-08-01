@@ -3,8 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  UpdateView)
+from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
 
 from .forms import FilterTask, TaskForm
@@ -33,6 +32,7 @@ class ViewTaskView(LoginRequiredMixin, DetailView):
         context = super(ViewTaskView, self).get_context_data()
         context["labels"] = self.get_object().labels.all()
         return context
+
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"
@@ -76,8 +76,11 @@ class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         if self.request.user == self.get_object().author:
             super(TaskDeleteView, self).form_valid(form)
         else:
-            messages.add_message(self.request, messages.ERROR,
-                                 _("Task can only be deleted by it's author!"))
+            messages.add_message(
+                self.request,
+                messages.ERROR,
+                _("Task can only be deleted by it's author!"),
+            )
         return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):

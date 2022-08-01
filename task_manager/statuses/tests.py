@@ -8,6 +8,7 @@ from task_manager.statuses.models import Status
 # Create your tests here.
 OK_CODE = 200
 
+
 class TestStatuses(TestCase):
 
     fixtures = ["users.json", "statuses.json", "tasks.json", "labels.json"]
@@ -48,7 +49,8 @@ class TestStatuses(TestCase):
         new_status = {
             "name": "New Status",
         }
-        response = self.client.post(reverse("statuses:create"), new_status, follow=True)
+        response = self.client.post(reverse("statuses:create"),
+                                    new_status, follow=True)
 
         created_status = Status.objects.get(pk=5)
 
@@ -67,12 +69,14 @@ class TestStatuses(TestCase):
         }
 
         response = self.client.post(
-            reverse("statuses:update", args=(status.id,)), updated_data, follow=True
+            reverse("statuses:update", args=(status.id,)),
+            updated_data,
+            follow=True
         )
 
         updated_status = Status.objects.get(id=status.id)
 
-        self.assertRedirects(response, "/statuses/")
+        self.assertRedirects(response, "/statuses/", status_code=302, target_status_code=200, fetch_redirect_response=True)
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("Status updated successfully!"))
         self.assertTrue(updated_status.name == "One more status")
@@ -82,7 +86,8 @@ class TestStatuses(TestCase):
 
         with self.assertRaises(Exception):
             self.client.post(
-                reverse("statuses:delete", args=(self.status4.id,)), follow=True
+                reverse("statuses:delete", args=(self.status4.id,)),
+                follow=True
             )
 
         Task.objects.all().delete()
