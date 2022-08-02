@@ -76,7 +76,7 @@ class TestStatuses(TestCase):
 
         updated_status = Status.objects.get(id=status.id)
 
-        self.assertRedirects(response, "/statuses/", status_code=302, target_status_code=200, fetch_redirect_response=True)
+        self.assertRedirects(response, "/statuses/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("Status updated successfully!"))
         self.assertTrue(updated_status.name == "One more status")
