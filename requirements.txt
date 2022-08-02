@@ -36,23 +36,8 @@ django==4.0.3; python_version >= "3.8" \
 gunicorn==20.1.0; python_version >= "3.5" \
     --hash=sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e \
     --hash=sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8
-psycopg2-binary==2.9.3; python_version >= "3.6" \
-    --hash=sha256:0c9d5450c566c80c396b7402895c4369a410cab5a82707b11aee1e624da7d004 \
-    --hash=sha256:280b0bb5cbfe8039205c7981cceb006156a675362a00fe29b16fbc264e242834 \
-    --hash=sha256:35168209c9d51b145e459e05c31a9eaeffa9a6b0fd61689b48e07464ffd1a83e \
-    --hash=sha256:63638d875be8c2784cfc952c9ac34e2b50e43f9f0a0660b65e2a87d656b3116c \
-    --hash=sha256:6472a178e291b59e7f16ab49ec8b4f3bdada0a879c68d3817ff0963e722a82ce \
-    --hash=sha256:761df5313dc15da1502b21453642d7599d26be88bff659382f8f9747c7ebea4e \
-    --hash=sha256:8fc53f9af09426a61db9ba357865c77f26076d48669f2e1bb24d85a22fb52307 \
-    --hash=sha256:af9813db73395fb1fc211bac696faea4ca9ef53f32dc0cfa27e4e7cf766dcf24 \
-    --hash=sha256:d1c1b569ecafe3a69380a94e6ae09a4789bbb23666f3d3a08d06bbd2451f5ef1 \
-    --hash=sha256:def68d7c21984b0f8218e8a15d514f714d96904265164f75f8d3a70f9c295667 \
-    --hash=sha256:dffc08ca91c9ac09008870c9eb77b00a46b3378719584059c034b8945e26b272 \
-    --hash=sha256:ffb7a888a047696e7f8240d649b43fb3644f14f0ee229077e7f6b9f9081635bd
-psycopg2==2.9.3; python_version >= "3.6" \
-    --hash=sha256:0762c27d018edbcb2d34d51596e4346c983bd27c330218c56c4dc25ef7e819bf \
-    --hash=sha256:34b33e0162cfcaad151f249c2649fd1030010c16f4bbc40a604c1cb77173dcf7 \
-    --hash=sha256:8e841d1bf3434da985cc5ef13e6f75c8981ced601fd70cc6bf33351b91562981
+psycopg2-binary==2.9.3; python_version >= "3.6"
+psycopg2==2.9.3; python_version >= "3.6"
 python-dotenv==0.20.0; python_version >= "3.5" \
     --hash=sha256:b7e3b04a59693c42c36f9ab1cc2acc46fa5df8c78e178fc33a8d4cd05c8d498f \
     --hash=sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938
@@ -65,4 +50,6 @@ sqlparse==0.4.2; python_version >= "3.8" \
 tzdata==2022.1; sys_platform == "win32" and python_version >= "3.8" \
     --hash=sha256:238e70234214138ed7b4e8a0fab0e5e13872edab3be586ab8198c407620e2ab9 \
     --hash=sha256:8b536a8ec63dc0751342b3984193a3118f8fca2afe25752bb9b7fffd398552d3
-
+whitenoise==6.2.0; python_version >= "3.7"\
+    --hash=sha256:8e9c600a5c18bd17655ef668ad55b5edf6c24ce9bdca5bf607649ca4b1e8e2c2 \
+    --hash=sha256:8fa943c6d4cd9e27673b70c21a07b0aa120873901e099cd46cab40f7cc96d567
