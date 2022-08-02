@@ -37,6 +37,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    "still-castle-99759.herokuapp.com",
     "localhost",
     "webserver",
     "127.0.0.1",
