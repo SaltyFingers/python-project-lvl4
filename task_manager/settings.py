@@ -30,6 +30,7 @@ FIXTURE_DIRS = (os.path.join(BASE_DIR, "fixtures"),)
 # SECURITY WARNING: keep the secret key used in production secret!
 
 load_dotenv(find_dotenv())
+
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
