@@ -207,7 +207,7 @@ msgstr "Дата создания"
 
 #: task_manager/users/tests.py:49 task_manager/users/views.py:26
 msgid "User created successfully!"
-msgstr "Пользователь создан изменен!"
+msgstr "Пользователь успешно создан!"
 
 #: task_manager/users/tests.py:75 task_manager/users/views.py:40
 msgid "User updated successfully!"
