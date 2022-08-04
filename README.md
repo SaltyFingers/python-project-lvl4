@@ -7,15 +7,22 @@ To use this app you should register and log in.
 
 ### How to install:
 To istall an app from GitHub on Your PC use command
+    
     pip install git+https://github.com/SaltyFingers/python-project-lvl4
+
 in your terminal.
 
-Create ".env" file in main project's directory and create local variable:
+Create ``.env`` file in main project's directory and create local variable:
+
     SECRET_KEY='this is your secret key'
 
 Then use command
+
     pip install -r requirements.txt
+
 to install all dependencies
 
-To run app at local host http://127.0.0.1:8000/ use command:
+To run app at local host ``http://127.0.0.1:8000/`` use command:
+
     make run
+
