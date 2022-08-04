@@ -104,14 +104,7 @@ DATABASES = {
     }
 }
 
-if not DEBUG:
-    DATABASES["default"] = dj_database_url.config(conn_max_age=600)
-
-
-#
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-#
-
+DATABASES["default"].update(dj_database_url.config(conn_max_age=600))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
