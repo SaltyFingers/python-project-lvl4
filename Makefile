@@ -19,5 +19,6 @@ locale:
 compile:
 	poetry run django-admin compilemessages
 
-test-coverage:
-	poetry run pytest --cov=task_manager
+coverage:
+	poetry run coverage run manage.py test
+	poetry run coverage xml
