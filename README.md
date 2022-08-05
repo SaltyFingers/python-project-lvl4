@@ -22,7 +22,7 @@ Then use command
 
 to install all dependencies
 
-To run app at local host ``http://127.0.0.1:8000/`` use command:
+To run app at local host http://127.0.0.1:8000/ use command:
 
     make run
 

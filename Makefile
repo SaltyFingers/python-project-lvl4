@@ -18,3 +18,6 @@ locale:
 
 compile:
 	poetry run django-admin compilemessages
+
+test-coverage:
+	poetry run pytest --cov=task_manager
