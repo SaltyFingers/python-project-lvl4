@@ -20,6 +20,7 @@ jobs:
         # make depends on poetry
       - name: Install dependencies
         run: |
+          pip install poetry
           pip install -r requirements.txt
           poetry update
           poetry install
