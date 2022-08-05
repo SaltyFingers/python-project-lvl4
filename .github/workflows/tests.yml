@@ -28,8 +28,5 @@ jobs:
       - name: Run Django tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DEBUG: ${{ secrets.DEBUG }}
         run: |
           make test

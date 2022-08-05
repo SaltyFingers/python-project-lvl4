@@ -56,6 +56,9 @@ psycopg2==2.9.3; python_version >= "3.6" \
 python-dotenv==0.20.0; python_version >= "3.5" \
     --hash=sha256:b7e3b04a59693c42c36f9ab1cc2acc46fa5df8c78e178fc33a8d4cd05c8d498f \
     --hash=sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938
+pytest-cov==3.0.0; python_version >= "3.6" \
+    --hash=sha256:e7f0f5b1617d2210a2cabc266dfe2f4c75a8d32fb89eafb7ad9d06f6d076d470 \
+    --hash=sha256:578d5d15ac4a25e5f961c938b85a05b09fdaae9deef3bb6de9a6e766622ca7a6
 soupsieve==2.3.1; python_full_version > "3.0.0" and python_version >= "3.7" \
     --hash=sha256:1a3cca2617c6b38c0343ed661b1fa5de5637f257d4fe22bd9f1338010a1efefb \
     --hash=sha256:b8d49b1cd4f037c7082a9683dfa1801aa2597fb11c3a1155b7a5b94829b4f1f9
@@ -68,3 +71,17 @@ tzdata==2022.1; sys_platform == "win32" and python_version >= "3.8" \
 whitenoise==6.2.0; python_version >= "3.7"\
     --hash=sha256:8e9c600a5c18bd17655ef668ad55b5edf6c24ce9bdca5bf607649ca4b1e8e2c2 \
     --hash=sha256:8fa943c6d4cd9e27673b70c21a07b0aa120873901e099cd46cab40f7cc96d567
+coverage==6.4.2 \
+    --hash=sha256:0f211df2cba951ffcae210ee00e54921ab42e2b64e0bf2c0befc977377fb09b7 \
+    --hash=sha256:147605e1702d996279bb3cc3b164f408698850011210d133a2cb96a73a2f7996 \
+    --hash=sha256:25b7ec944f114f70803d6529394b64f8749e93cbfac0fe6c5ea1b7e6c14e8a46 \
+    --hash=sha256:2dff52b3e7f76ada36f82124703f4953186d9029d00d6287f17c68a75e2e6039 \
+    --hash=sha256:422fa44070b42fef9fb8dabd5af03861708cdd6deb69463adc2130b7bf81332f \
+    --hash=sha256:5336e0352c0b12c7e72727d50ff02557005f79a0b8dcad9219c7c4940a930083 \
+    --hash=sha256:6c3ccfe89c36f3e5b9837b9ee507472310164f352c9fe332120b764c9d60adbe \
+    --hash=sha256:7bb00521ab4f99fdce2d5c05a91bddc0280f0afaee0e0a00425e28e209d4af07 \
+    --hash=sha256:8af6c26ba8df6338e57bedbf916d76bdae6308e57fc8f14397f03b5da8622b4e \
+    --hash=sha256:a13772c19619118903d65a91f1d5fea84be494d12fd406d06c849b00d31bf120
+pytest-cov==3.0.0; python_version >= "3.6" \
+    --hash=sha256:e7f0f5b1617d2210a2cabc266dfe2f4c75a8d32fb89eafb7ad9d06f6d076d470 \
+    --hash=sha256:578d5d15ac4a25e5f961c938b85a05b09fdaae9deef3bb6de9a6e766622ca7a6
