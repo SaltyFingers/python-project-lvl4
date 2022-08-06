@@ -24,9 +24,9 @@ jobs:
 
       - name: Run coverage
         uses: paambaati/codeclimate-action@v3.0.0
-          env:
-            CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-            SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          with:
-            coverageCommand: make coverage
-            debug: true
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        with:
+          coverageCommand: make coverage
+          debug: true
