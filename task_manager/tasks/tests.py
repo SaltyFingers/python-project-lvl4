@@ -74,7 +74,9 @@
 
 #         created_task = Task.objects.last()
 
-#         # self.assertRedirects(response, "/tasks/", status_code=302, target_status_code=200, fetch_redirect_response=True)
+#         # self.assertRedirects(response, "/tasks/",
+#                                status_code=302, target_status_code=200,
+#                                fetch_redirect_response=True)
 #         self.assertTrue(response.status_code == OK_CODE)
 #         # self.assertContains(response, _("Task created successfully!"))
 #         self.assertTrue(created_task.id == 4)
