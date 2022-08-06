@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/SaltyFingers/python-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/SaltyFingers/python-project-lvl4/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/8d3fe4f6a0732058de10/maintainability)](https://codeclimate.com/github/SaltyFingers/python-project-lvl4/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/8d3fe4f6a0732058de10/test_coverage)](https://codeclimate.com/github/SaltyFingers/python-project-lvl4/test_coverage)
 
-### Description of [Task Manager](https://still-castle-99759.herokuapp.com/):
+### Description of [Task Manager](https://still-castle-99759.herokuapp.com/)(← Clickable URL):
 This is a task manager app. It's allows you to create tasks, statuses, labels and link it to each other, filter tasks. Also you can assign an executor to created task.
 To use this app you should register and log in.
 
