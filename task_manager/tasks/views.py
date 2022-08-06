@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
@@ -38,7 +39,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"
     model = Task
     form_class = TaskForm
-    success_url = "/tasks"
+    success_url = reverse_lazy("tasks:list")
     success_message = _("Task created successfully!")
 
     def form_valid(self, form):
@@ -56,7 +57,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "form.html"
     model = Task
     form_class = TaskForm
-    success_url = "/tasks"
+    success_url = reverse_lazy("tasks:list")
     success_message = _("Task updated successfully!")
 
     def get_context_data(self, **kwargs):
@@ -69,7 +70,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = "delete.html"
-    success_url = "/tasks"
+    success_url = reverse_lazy("tasks:list")
     success_message = _("Task deleted successfully!")
 
     def form_valid(self, form):
