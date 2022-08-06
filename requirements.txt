@@ -21,7 +21,7 @@ backports.zoneinfo==0.2.1; python_version < "3.9" and python_version >= "3.8" \
 beautifulsoup4==4.10.0; python_full_version > "3.0.0" and python_version >= "3.7" \
     --hash=sha256:9a315ce70049920ea4572a4055bc4bd700c940521d36fc858205ad4fcde149bf \
     --hash=sha256:c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891
-dj-database-url==0.5.0; python_version >= "3.7"\ \
+dj-database-url==0.5.0; python_version >= "3.7" \
     --hash=sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163 \
     --hash=sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9
 django-bootstrap4==22.1; python_version >= "3.7" \
@@ -71,7 +71,7 @@ tzdata==2022.1; sys_platform == "win32" and python_version >= "3.8" \
 whitenoise==6.2.0; python_version >= "3.7"\
     --hash=sha256:8e9c600a5c18bd17655ef668ad55b5edf6c24ce9bdca5bf607649ca4b1e8e2c2 \
     --hash=sha256:8fa943c6d4cd9e27673b70c21a07b0aa120873901e099cd46cab40f7cc96d567
-coverage==6.4.2; python_version >= "3.7"\ \
+coverage==6.4.2; python_version >= "3.7" \
     --hash=sha256:0f211df2cba951ffcae210ee00e54921ab42e2b64e0bf2c0befc977377fb09b7 \
     --hash=sha256:147605e1702d996279bb3cc3b164f408698850011210d133a2cb96a73a2f7996 \
     --hash=sha256:25b7ec944f114f70803d6529394b64f8749e93cbfac0fe6c5ea1b7e6c14e8a46 \
