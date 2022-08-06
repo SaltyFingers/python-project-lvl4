@@ -37,7 +37,6 @@ jobs:
               pip install flake8
               pip install pytest
               pip install pytest-cov
-              make install
         - uses: paambaati/codeclimate-action@v3.0.0
           env:
             SECRET_KEY: ${{ secrets.SECRET_KEY }}
