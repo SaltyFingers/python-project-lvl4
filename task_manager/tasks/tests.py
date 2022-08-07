@@ -74,11 +74,11 @@
 
 #         created_task = Task.objects.last()
 
-#         # self.assertRedirects(response, "/tasks/",
-#                                status_code=302, target_status_code=200,
-#                                fetch_redirect_response=True)
+#         self.assertRedirects(response, "/tasks/",
+#                              status_code=302, target_status_code=200,
+#                              fetch_redirect_response=True)
 #         self.assertTrue(response.status_code == OK_CODE)
-#         # self.assertContains(response, _("Task created successfully!"))
+#         self.assertContains(response, _("Task created successfully!"))
 #         self.assertTrue(created_task.id == 4)
 #         self.assertTrue(created_task.autor == self.user1.name)
 
@@ -102,9 +102,9 @@
 
 #         updated_task = Task.objects.get(id=task.id)
 
-#         # self.assertRedirects(response, "/tasks/")
+#         self.assertRedirects(response, "/tasks/")
 #         self.assertTrue(response.status_code == OK_CODE)
-#         # self.assertContains(response, _("Task updated successfully!"))
+#         self.assertContains(response, _("Task updated successfully!"))
 #         self.assertFalse(updated_task.name == old_name)
 #         self.assertFalse(updated_task.executor == old_executor)
 #         self.assertTrue(updated_task.name == "Not easy task")
@@ -131,7 +131,7 @@
 #         with self.assertRaises(Task.DoesNotExist):
 #             Task.objects.get(id=self.task1.id)
 
-#         # self.assertRedirects(response, "/tasks/")
+#         self.assertRedirects(response, "/tasks/")
 #         self.assertTrue(response.status_code == OK_CODE)
 #         self.assertContains(response, _("Task deleted successfully!"))
 
@@ -157,4 +157,4 @@
 #         qs = Task.objects.all()
 #         f = FilterTask(data={"labels": self.label4.id}, queryset=qs)
 #         self.assertTrue(self.task1 in f.qs and self.task2 in f.qs)
-#         # self.assertTrue(self.task3 not in f.qs)
+#         self.assertTrue(self.task3 not in f.qs)
