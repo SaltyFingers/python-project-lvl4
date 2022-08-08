@@ -156,7 +156,7 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-bootstrap4"
-version = "22.1"
+version = "22.2"
 description = "Bootstrap 4 for Django"
 category = "main"
 optional = false
@@ -164,7 +164,7 @@ python-versions = ">=3.7"
 
 [package.dependencies]
 beautifulsoup4 = ">=4.8.0"
-Django = ">=2.2"
+Django = ">=3.2"
 
 [[package]]
 name = "django-filter"
@@ -533,10 +533,7 @@ dj-database-url = [
     {file = "dj_database_url-0.5.0-py2.py3-none-any.whl", hash = "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"},
 ]
 django = []
-django-bootstrap4 = [
-    {file = "django-bootstrap4-22.1.tar.gz", hash = "sha256:fc9984f7238fbcd330ec5111bf0435083caa7192b022eedd53bfa4128bee318f"},
-    {file = "django_bootstrap4-22.1-py3-none-any.whl", hash = "sha256:b6da4cb54682012ff8baa1a1e672ba30cbfae82fb3d74f4b341109074e8e239f"},
-]
+django-bootstrap4 = []
 django-filter = [
     {file = "django-filter-22.1.tar.gz", hash = "sha256:ed473b76e84f7e83b2511bb2050c3efb36d135207d0128dfe3ae4b36e3594ba5"},
     {file = "django_filter-22.1-py3-none-any.whl", hash = "sha256:ed429e34760127e3520a67f415bec4c905d4649fbe45d0d6da37e6ff5e0287eb"},
