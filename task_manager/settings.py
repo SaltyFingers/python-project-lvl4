@@ -34,7 +34,7 @@ load_dotenv(find_dotenv())
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-ROLLBAR_TOKEN = os.environ["ROLLBAR_TOKEN"]
+ROLLBAR_TOKEN = os.environ["ACCESS_TOKEN"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
