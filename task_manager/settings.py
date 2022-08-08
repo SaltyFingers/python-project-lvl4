@@ -34,6 +34,8 @@ load_dotenv(find_dotenv())
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
+ROLLBAR_TOKEN = os.environ["ROLLBAR_TOKEN"]
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -96,7 +98,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "task_manager.wsgi.application"
 
 ROLLBAR = {
-    'access_token': os.environ["ROLLBAR_TOKEN"],
+    'access_token': ROLLBAR_TOKEN,
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
