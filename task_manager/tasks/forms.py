@@ -34,8 +34,8 @@ class FilterTask(django_filters.FilterSet):
     )
 
     all_labels = Label.objects.values_list("id", "name").all()
-    label = django_filters.filters.ChoiceFilter(label=_("Label"),
-                                                choices=all_labels)
+    labels = django_filters.filters.ChoiceFilter(label=_("Labels"),
+                                                 choices=all_labels)
 
     self_filter = django_filters.filters.BooleanFilter(
         label=_("Only my taks"),
@@ -51,4 +51,4 @@ class FilterTask(django_filters.FilterSet):
 
     class Meta:
         model = Task
-        fields = ["status", "executor", "label"]
+        fields = ["status", "executor", "labels"]
