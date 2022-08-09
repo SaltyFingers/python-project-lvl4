@@ -42,9 +42,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "still-castle-99759.herokuapp.com",
     "localhost",
-    "webserver",
-    "webserver:9000",
     "127.0.0.1",
+    "webserver",
 ]
 
 
