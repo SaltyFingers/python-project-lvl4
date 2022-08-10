@@ -9,6 +9,3 @@ tmp
 coverage.xml
 .pytest_cache/
 .vim
-
-static_collected
-staticfiles/*
