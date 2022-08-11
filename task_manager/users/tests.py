@@ -46,7 +46,7 @@ class TestUsers(TestCase):
 
         created_user = User.objects.last()
 
-        self.assertRedirects(response, "/login")
+        self.assertRedirects(response, "/login/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("User created successfully!"))
         self.assertTrue(created_user.check_password("qwerty12345"))
