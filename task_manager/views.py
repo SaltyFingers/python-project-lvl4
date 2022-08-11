@@ -12,7 +12,7 @@ class IndexView(TemplateView):
 
 class LoginView(SuccessMessageMixin, LoginView):
     template_name = "form.html"
-    next_page="/"
+    next_page = "/"
     success_message = _("Successfully logged in!")
 
     def get_context_data(self, **kwargs):
@@ -23,8 +23,8 @@ class LoginView(SuccessMessageMixin, LoginView):
 
 
 class LogoutView(LogoutView):
-    next_page="/"
-    
+    next_page = "/"
+
     def dispatch(self, request, *args, **kwargs):
         messages.add_message(request, messages.INFO,
                              _("Successfully logged out!"))
