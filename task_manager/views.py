@@ -22,10 +22,10 @@ class LoginView(SuccessMessageMixin, LoginView):
         return context
 
 
-class LogoutView(LogoutView):
+class LogoutView(SuccessMessageMixin, LogoutView):
     next_page = "index"
 
     def dispatch(self, request, *args, **kwargs):
-        messages.success(request, messages.INFO,
-                         _("Successfully logged out!"))
+        messages.add_message(request, messages.INFO,
+                             _("Successfully logged out!"))
         return super().dispatch(request, *args, **kwargs)
