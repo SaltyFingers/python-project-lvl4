@@ -34,7 +34,7 @@ class FilterTask(django_filters.FilterSet):
     )
 
     all_labels = Label.objects.values_list("id", "name").all()
-    labels = django_filters.filters.ChoiceFilter(label=_("Labels"),
+    labels = django_filters.filters.ChoiceFilter(label=_("Label"),
                                                  choices=all_labels)
 
     self_filter = django_filters.filters.BooleanFilter(
