@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-12 14:48+0000\n"
+"POT-Creation-Date: 2022-08-12 17:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,8 +243,8 @@ msgid "Log in"
 msgstr "Войти"
 
 #: task_manager/views.py:30
-msgid "Successfully logged out!"
-msgstr "Вы успешно разлогинились!"
+msgid "You are logged out"
+msgstr "Вы разлогинены"
 
 #: templates/base.html:15 templates/base.html:20
 msgid "Task manager"
@@ -273,6 +273,3 @@ msgstr "Практические курсы по программировани�
 #: templates/index.html:16
 msgid "Learn more"
 msgstr "Узнать больше"
-
-#~ msgid "Label"
-#~ msgstr "Метка"
