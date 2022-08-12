@@ -1,10 +1,13 @@
-from django import forms
-from .models import Task
-from task_manager.statuses.models import Status
-from task_manager.labels.models import Label
-from task_manager.users.models import User
-from django.utils.translation import gettext_lazy as _
 import django_filters
+from django import forms
+from django.db.models.functions import Concat
+from django.db.models import Value as V
+from django.utils.translation import gettext_lazy as _
+from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
+from task_manager.users.models import User
+
+from .models import Task
 
 
 class TaskForm(forms.ModelForm):
@@ -28,7 +31,7 @@ class FilterTask(django_filters.FilterSet):
         label=_("Status"), choices=all_statuses
     )
 
-    all_executors = User.objects.values_list("id", "username").all()
+    all_executors = User.objects.values_list("id", Concat("first_name", V(" "), "last_name") ).all()
     executor = django_filters.filters.ChoiceFilter(
         label=_("Executor"), choices=all_executors
     )
