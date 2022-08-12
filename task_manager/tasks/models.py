@@ -8,7 +8,7 @@ from task_manager.labels.models import Label
 
 class Task(models.Model):
     name = models.CharField(max_length=100, null=False)
-    description = models.CharField(max_length=500, null=False)
+    description = models.TextField(null=False)
     author = models.ForeignKey(
         User, on_delete=models.PROTECT, null=True, related_name="tasks"
     )
