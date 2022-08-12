@@ -63,15 +63,15 @@ msgstr "Удалить"
 
 #: task_manager/labels/tests.py:58 task_manager/labels/views.py:22
 msgid "Label created successfully!"
-msgstr "Метка успешно создана!"
+msgstr "Метка успешно создана"
 
 #: task_manager/labels/tests.py:79 task_manager/labels/views.py:36
 msgid "Label updated successfully!"
-msgstr "Метка успешно изменена!"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/tests.py:94 task_manager/labels/views.py:49
 msgid "Label deleted successfully!"
-msgstr "Метка успешно удалена!"
+msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:27 task_manager/statuses/views.py:28
 #: task_manager/tasks/views.py:52
@@ -97,15 +97,15 @@ msgstr "Создать статус"
 
 #: task_manager/statuses/tests.py:59 task_manager/statuses/views.py:23
 msgid "Status created successfully!"
-msgstr "Статус успешно создан!"
+msgstr "Статус успешно создан"
 
 #: task_manager/statuses/tests.py:81 task_manager/statuses/views.py:37
 msgid "Status updated successfully!"
-msgstr "Статус успешно изменен!"
+msgstr "Статус успешно изменён"
 
 #: task_manager/statuses/tests.py:103 task_manager/statuses/views.py:50
 msgid "Status deleted successfully!"
-msgstr "Статус успешно удален!"
+msgstr "Статус успешно удалён"
 
 #: task_manager/statuses/views.py:41
 msgid "Update status"
@@ -159,19 +159,19 @@ msgstr "Просмотр задачи"
 
 #: task_manager/tasks/tests.py:81 task_manager/tasks/views.py:43
 msgid "Task created successfully!"
-msgstr "Задача успешно создана!"
+msgstr "Задача успешно создана"
 
 #: task_manager/tasks/tests.py:106 task_manager/tasks/views.py:61
 msgid "Task updated successfully!"
-msgstr "Задача успешно изменена!"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/tests.py:121 task_manager/tasks/views.py:83
 msgid "Task can only be deleted by it's author!"
-msgstr "Задача может быть удалена только автором!"
+msgstr "Задачу может удалить только её автор"
 
 #: task_manager/tasks/tests.py:135 task_manager/tasks/views.py:74
 msgid "Task deleted successfully!"
-msgstr "Задача успешно удалена!"
+msgstr "Задача успешно удалена"
 
 #: task_manager/tasks/views.py:23
 msgid "Show"
