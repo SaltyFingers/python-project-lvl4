@@ -208,11 +208,11 @@ msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/tests.py:77 task_manager/users/views.py:40
 msgid "User updated successfully!"
-msgstr "Пользователь успешно изменен!"
+msgstr "Пользователь успешно изменён"
 
 #: task_manager/users/tests.py:101 task_manager/users/views.py:53
 msgid "User deleted successfully!"
-msgstr "Пользователь успешно удален!"
+msgstr "Пользователь успешно удалён"
 
 #: task_manager/users/views.py:30 templates/base.html:51
 msgid "Registration"
