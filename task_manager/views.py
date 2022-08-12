@@ -12,7 +12,7 @@ class IndexView(TemplateView):
 
 class LoginView(SuccessMessageMixin, LoginView):
     template_name = "form.html"
-    success_message = _("Successfully logged in!")
+    success_message = _("You are logged in")
     next_page = "index"
 
     def get_context_data(self, **kwargs):
