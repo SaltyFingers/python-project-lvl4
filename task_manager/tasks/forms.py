@@ -10,7 +10,7 @@ import django_filters
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ["name", "status", "description", "executor", "labels"]
+        fields = ["name", "description", "status", "executor", "labels"]
         labels = {
             "id": _("id"),
             "name": _("Name"),
