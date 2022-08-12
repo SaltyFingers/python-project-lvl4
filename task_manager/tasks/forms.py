@@ -31,7 +31,9 @@ class FilterTask(django_filters.FilterSet):
         label=_("Status"), choices=all_statuses
     )
 
-    all_executors = User.objects.values_list("id", Concat("first_name", V(" "), "last_name") ).all()
+    all_executors = User.objects.values_list("id",
+                                             Concat("first_name", V(" "),
+                                                    "last_name")).all()
     executor = django_filters.filters.ChoiceFilter(
         label=_("Executor"), choices=all_executors
     )

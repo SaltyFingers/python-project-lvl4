@@ -182,7 +182,7 @@ msgstr "Показать"
 
 #: task_manager/tasks/views.py:65
 msgid "Update task"
-msgstr "Изменить задачу"
+msgstr "Изменение задачи"
 
 #: task_manager/tasks/views.py:89
 msgid "Delete task"
