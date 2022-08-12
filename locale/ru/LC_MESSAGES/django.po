@@ -137,7 +137,7 @@ msgstr "Исполнитель"
 
 #: task_manager/tasks/forms.py:41
 msgid "Only my taks"
-msgstr "Только мои задачи"
+msgstr "Только свои задачи"
 
 #: task_manager/tasks/templates/tasks.html:8 task_manager/tasks/views.py:22
 #: templates/base.html:37
