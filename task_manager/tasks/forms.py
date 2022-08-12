@@ -46,7 +46,7 @@ class FilterTask(django_filters.FilterSet):
         label=_("Only my taks"),
         widget=forms.CheckboxInput(),
         method="filter_my_tasks"
-        )
+    )
 
     def filter_my_tasks(self, queryset, name, value):
         if value:
