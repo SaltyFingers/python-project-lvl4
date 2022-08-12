@@ -26,6 +26,6 @@ class LogoutView(LogoutView):
     next_page = "index"
 
     def dispatch(self, request, *args, **kwargs):
-        messages.add_message(request, messages.INFO,
-                             _("Successfully logged out!"))
+        messages.success(request, messages.INFO,
+                         _("Successfully logged out!"))
         return super().dispatch(request, *args, **kwargs)
