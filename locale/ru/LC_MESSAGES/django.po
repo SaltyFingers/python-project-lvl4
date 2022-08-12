@@ -220,7 +220,7 @@ msgstr "Регистрация"
 
 #: task_manager/users/views.py:31
 msgid "Register"
-msgstr "Зарегестрировать"
+msgstr "Зарегистрировать"
 
 #: task_manager/users/views.py:44
 msgid "Update user"
