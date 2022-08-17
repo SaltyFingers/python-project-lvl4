@@ -21,6 +21,12 @@ class TestStatuses(TestCase):
         self.status3 = Status.objects.get(pk=3)
         self.status4 = Status.objects.get(pk=4)
 
+    def test_not_login_user_access(self):
+        response = self.client.post(
+            reverse("statuses:list"), follow=True
+        )
+        self.assertRedirects(response, "/login/?next=/statuses/")
+
     def test_statuses_list(self):
         self.client.force_login(self.user1)
 
@@ -84,13 +90,8 @@ class TestStatuses(TestCase):
     def test_delete_status(self):
         self.client.force_login(self.user1)
 
-        with self.assertRaises(Exception):
-            self.client.post(
-                reverse("statuses:delete", args=(self.status4.id,)),
-                follow=True
-            )
-
         Task.objects.all().delete()
+
         response = self.client.post(
             reverse("statuses:delete", args=(self.status4.id,)), follow=True
         )
@@ -101,3 +102,16 @@ class TestStatuses(TestCase):
         self.assertRedirects(response, "/statuses/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("Status deleted successfully!"))
+
+    def test_delete_status_in_use(self):
+        self.client.force_login(self.user1)
+
+        response = self.client.post(
+            reverse("statuses:delete", args=(self.status4.id,)), follow=True
+        )
+
+        self.assertRedirects(response, "/statuses/")
+        self.assertTrue(response.status_code == OK_CODE)
+        self.assertContains(response,
+                            _("Status can not be deleted \
+                              because it is in use"))

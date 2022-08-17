@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
@@ -47,6 +49,17 @@ class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = "delete.html"
     success_url = "/labels"
     success_message = _("Label deleted successfully!")
+
+    def form_valid(self, form):
+        if self.get_object().tasks.all():
+            messages.add_message(
+                self.request,
+                messages.ERROR,
+                _("Label can not be deleted because it is in use"),
+            )
+        else:
+            super(LabelDeleteView, self).form_valid(form)
+        return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

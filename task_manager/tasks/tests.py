@@ -34,6 +34,13 @@ class TestTasks(TestCase):
         self.label3 = Label.objects.get(pk=3)
         self.label4 = Label.objects.get(pk=5)
 
+    def test_not_login_user_access(self):
+        response = self.client.post(
+            reverse("tasks:list"), follow=True
+        )
+
+        self.assertRedirects(response, "/login/?next=/tasks/")
+
     def test_tasks_list(self):
         self.client.force_login(self.user1)
 

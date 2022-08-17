@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from task_manager.labels.models import Label
 from task_manager.users.models import User
+from task_manager.tasks.models import Task
 
 # Create your tests here.
 
@@ -20,6 +21,13 @@ class TestLabels(TestCase):
         self.label2 = Label.objects.get(pk=2)
         self.label3 = Label.objects.get(pk=3)
         self.label4 = Label.objects.get(pk=5)
+
+    def test_not_login_user_access(self):
+        response = self.client.post(
+            reverse("labels:list"), follow=True
+        )
+
+        self.assertRedirects(response, "/login/?next=/labels/")
 
     def test_labels_list(self):
         self.client.force_login(self.user1)
@@ -82,6 +90,8 @@ class TestLabels(TestCase):
     def test_delete_labels(self):
         self.client.force_login(self.user1)
 
+        Task.objects.all().delete()
+
         response = self.client.post(
             reverse("labels:delete", args=(self.label4.id,)), follow=True
         )
@@ -92,3 +102,16 @@ class TestLabels(TestCase):
         self.assertRedirects(response, "/labels/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("Label deleted successfully!"))
+
+    def test_delete_label_in_use(self):
+        self.client.force_login(self.user1)
+
+        response = self.client.post(
+            reverse("labels:delete", args=(self.label4.id,)), follow=True
+        )
+
+        self.assertRedirects(response, "/labels/")
+        self.assertTrue(response.status_code == OK_CODE)
+        self.assertContains(response,
+                            _("Label can not be deleted\
+                              because it is in use"))

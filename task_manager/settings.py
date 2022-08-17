@@ -134,6 +134,7 @@ AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
+LOGIN_URL = "/login"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

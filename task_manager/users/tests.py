@@ -1,4 +1,3 @@
-from urllib import response
 from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -84,12 +83,8 @@ class TestUsers(TestCase):
     def test_delete_user(self):
         self.client.force_login(self.user1)
 
-        with self.assertRaises(Exception):
-            self.client.post(
-                reverse("users:delete", args=(self.user1.id,)), follow=True
-            )
-
         Task.objects.all().delete()
+
         response = self.client.post(
             reverse("users:delete", args=(self.user1.id,)), follow=True
         )
@@ -101,16 +96,26 @@ class TestUsers(TestCase):
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response, _("User deleted successfully!"))
 
-    def test_delete_another_user(self):
+    def test_delete_user_in_use(self):
         self.client.force_login(self.user1)
 
         response = self.client.post(
-            reverse("users:delete", args=(self.user2.id,)), follow=True
+            reverse("users:delete", args=(self.user1.id,)), follow=True
         )
-        
+
         self.assertRedirects(response, "/users/")
-        self.assertContains(response, _("User can only be deleted by himself"))
-        self.assertTrue(self.user2)
+        self.assertTrue(response.status_code == OK_CODE)
+        self.assertContains(response,
+                            _("User can not be deleted because it is in use"))
 
+    # def test_delete_another_user(self):
+    #     self.client.force_login(self.user1)
 
+    #     response = self.client.post(
+    #         reverse("users:delete", args=(self.user2.id,)), follow=True
+    #     )
 
+    #     self.assertRedirects(response, "/users/")
+    #     self.assertContains(response,
+    #                         _("User can only be deleted by himself"))
+    #     self.assertTrue(self.user2)

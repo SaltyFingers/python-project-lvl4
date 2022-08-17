@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
@@ -48,22 +48,22 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         return context
 
 
-class UserDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class UserDeleteView(SuccessMessageMixin,
+                     LoginRequiredMixin,
+                     UserPassesTestMixin,
+                     DeleteView):
     model = User
     template_name = "delete.html"
     success_url = "/users"
     success_message = _("User deleted successfully!")
 
-    def form_valid(self, form):
-        if self.request.user.id == self.get_object().id:
-            super(UserDeleteView, self).form_valid(form)
-        else:
-            messages.add_message(
-                self.request,
-                messages.ERROR,
-                _("User can only be deleted by himself"),
-            )
+    no_permission_url = "/users"
+    no_permission_message = 'You do not have rights to changhe another user'
 
+    def test_func(self):
+        return self.request.user == self.get_object()
+
+    def form_valid(self, form):
         if self.get_object().tasks.all() or self.get_object().works_on.all():
             messages.add_message(
                 self.request,
@@ -72,7 +72,6 @@ class UserDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
             )
         else:
             super(UserDeleteView, self).form_valid(form)
-
         return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):

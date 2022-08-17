@@ -14,9 +14,12 @@ class Task(models.Model):
         unique=True,
         verbose_name=_('Name')
     )
-    
-    description = models.TextField(null=False, verbose_name=_('Description'))
-    
+
+    description = models.TextField(
+        null=False,
+        verbose_name=_('Description')
+    )
+
     author = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
@@ -24,28 +27,30 @@ class Task(models.Model):
         related_name="tasks",
         verbose_name=_('Author')
     )
-    
+
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
         null=True,
-        related_name="tasks"
+        related_name="tasks",
+        verbose_name=_('Status')
     )
-    
+
     labels = models.ManyToManyField(
         Label,
         related_name="tasks",
-        blank=True
+        blank=True,
+        verbose_name=_('Labels')
     )
-    
+
     executor = models.ForeignKey(
         User, on_delete=models.PROTECT,
         null=True,
         related_name="works_on",
         blank=True,
-        default=' ',
+        verbose_name=_('Executor')
     )
-    
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

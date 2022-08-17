@@ -75,7 +75,7 @@ class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
     def form_valid(self, form):
         if self.request.user == self.get_object().author:
-            super(TaskDeleteView, self).form_valid(form)
+            return super(TaskDeleteView, self).form_valid(form)
         else:
             messages.add_message(
                 self.request,
