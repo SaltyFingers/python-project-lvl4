@@ -1,23 +1,23 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from ..my_mixins import MyLoginRequiredMixin
 from .forms import StatusForm
 from .models import Status
 
 # Create your views here.
 
 
-class StatusesView(LoginRequiredMixin, ListView):
+class StatusesView(MyLoginRequiredMixin, ListView):
     template_name = "statuses.html"
     model = Status
     context_object_name = "statuses"
 
 
-class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class StatusCreateView(MyLoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"
     model = Status
     form_class = StatusForm
@@ -31,7 +31,7 @@ class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return context
 
 
-class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdateView(MyLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
     template_name = "form.html"
     form_class = StatusForm
@@ -45,7 +45,7 @@ class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return context
 
 
-class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(MyLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Status
     template_name = "delete.html"
     success_url = "/statuses"

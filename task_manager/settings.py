@@ -37,7 +37,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 ROLLBAR_TOKEN = os.environ.get("ROLLBAR_TOKEN")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "still-castle-99759.herokuapp.com",
@@ -134,7 +134,7 @@ AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
-LOGIN_URL = "/login"
+# LOGIN_URL = "/login"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

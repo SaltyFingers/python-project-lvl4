@@ -1,17 +1,20 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
+from django.views.generic import (CreateView,
+                                  DeleteView,
+                                  DetailView,
+                                  UpdateView)
 from django_filters.views import FilterView
 
+from ..my_mixins import MyLoginRequiredMixin
 from .forms import FilterTask, TaskForm
 from .models import Task
 
 
-class TasksView(LoginRequiredMixin, FilterView):
+class TasksView(MyLoginRequiredMixin, FilterView):
     template_name = "tasks.html"
     model = Task
     filterset_class = FilterTask
@@ -24,7 +27,7 @@ class TasksView(LoginRequiredMixin, FilterView):
         return context
 
 
-class ViewTaskView(LoginRequiredMixin, DetailView):
+class ViewTaskView(MyLoginRequiredMixin, DetailView):
     template_name = "view_task.html"
     model = Task
     context_object_name = "task"
@@ -35,7 +38,7 @@ class ViewTaskView(LoginRequiredMixin, DetailView):
         return context
 
 
-class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(MyLoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"
     model = Task
     form_class = TaskForm
@@ -53,7 +56,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return context
 
 
-class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdateView(MyLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "form.html"
     model = Task
     form_class = TaskForm
@@ -67,7 +70,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return context
 
 
-class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(MyLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = "delete.html"
     success_url = reverse_lazy("tasks:list")

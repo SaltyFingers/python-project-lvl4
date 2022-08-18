@@ -25,7 +25,7 @@ class TestStatuses(TestCase):
         response = self.client.post(
             reverse("statuses:list"), follow=True
         )
-        self.assertRedirects(response, "/login/?next=/statuses/")
+        self.assertRedirects(response, "/login/")
 
     def test_statuses_list(self):
         self.client.force_login(self.user1)
@@ -113,5 +113,4 @@ class TestStatuses(TestCase):
         self.assertRedirects(response, "/statuses/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response,
-                            _("Status can not be deleted \
-                              because it is in use"))
+                            _("Status can not be deleted because it is in use")) # noqa

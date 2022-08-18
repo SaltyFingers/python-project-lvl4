@@ -1,15 +1,14 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from ..my_mixins import MyLoginRequiredMixin, MyUserPassesTestMixin
 from .forms import UserForm
 from .models import User
 
 
-# Create your views here.
 class UsersView(ListView):
     template_name = "users.html"
     model = User
@@ -34,12 +33,18 @@ class UserCreateView(SuccessMessageMixin, CreateView):
         return context
 
 
-class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+class UserUpdateView(SuccessMessageMixin,
+                     MyLoginRequiredMixin,
+                     MyUserPassesTestMixin,
+                     UpdateView):
     model = User
     template_name = "form.html"
     form_class = UserForm
     success_url = "/users"
     success_message = _("User updated successfully!")
+
+    def test_func(self):
+        return self.request.user == self.get_object()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,8 +54,8 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
 
 class UserDeleteView(SuccessMessageMixin,
-                     LoginRequiredMixin,
-                     UserPassesTestMixin,
+                     MyLoginRequiredMixin,
+                     MyUserPassesTestMixin,
                      DeleteView):
     model = User
     template_name = "delete.html"

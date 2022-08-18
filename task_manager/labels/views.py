@@ -1,22 +1,22 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from ..my_mixins import MyLoginRequiredMixin
 from .forms import LabelForm
 from .models import Label
 
 
 # Create your views here.
-class LabelsView(LoginRequiredMixin, ListView):
+class LabelsView(MyLoginRequiredMixin, ListView):
     template_name = "labels.html"
     model = Label
     context_object_name = "labels"
 
 
-class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class LabelCreateView(MyLoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "form.html"
     model = Label
     form_class = LabelForm
@@ -30,7 +30,7 @@ class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return context
 
 
-class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class LabelUpdateView(MyLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Label
     template_name = "form.html"
     form_class = LabelForm
@@ -44,7 +44,7 @@ class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return context
 
 
-class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class LabelDeleteView(MyLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Label
     template_name = "delete.html"
     success_url = "/labels"

@@ -39,7 +39,7 @@ class TestTasks(TestCase):
             reverse("tasks:list"), follow=True
         )
 
-        self.assertRedirects(response, "/login/?next=/tasks/")
+        self.assertRedirects(response, "/login/")
 
     def test_tasks_list(self):
         self.client.force_login(self.user1)

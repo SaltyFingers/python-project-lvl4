@@ -27,7 +27,7 @@ class TestLabels(TestCase):
             reverse("labels:list"), follow=True
         )
 
-        self.assertRedirects(response, "/login/?next=/labels/")
+        self.assertRedirects(response, "/login/")
 
     def test_labels_list(self):
         self.client.force_login(self.user1)
@@ -113,5 +113,4 @@ class TestLabels(TestCase):
         self.assertRedirects(response, "/labels/")
         self.assertTrue(response.status_code == OK_CODE)
         self.assertContains(response,
-                            _("Label can not be deleted\
-                              because it is in use"))
+                            _("Label can not be deleted because it is in use"))
