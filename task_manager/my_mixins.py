@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class MyLoginRequiredMixin(LoginRequiredMixin):
+    
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.add_message(
@@ -18,16 +19,13 @@ class MyLoginRequiredMixin(LoginRequiredMixin):
 
 
 class MyUserPassesTestMixin(UserPassesTestMixin):
-
-    def test_func(self):
-        return self.request.user == self.get_object()
-
+    
     def dispatch(self, request, *args, **kwargs):
         if not self.get_test_func()():
             messages.add_message(
                 self.request,
                 messages.ERROR,
-                _("You do not have rights to changhe another user"),
+                (self.no_permission_message),
             )
-            return redirect("/users")
+            return redirect(self.no_permission_url)
         return super().dispatch(request, *args, **kwargs)

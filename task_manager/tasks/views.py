@@ -9,7 +9,7 @@ from django.views.generic import (CreateView,
                                   UpdateView)
 from django_filters.views import FilterView
 
-from ..my_mixins import MyLoginRequiredMixin
+from ..my_mixins import MyLoginRequiredMixin, MyUserPassesTestMixin
 from .forms import FilterTask, TaskForm
 from .models import Task
 
@@ -70,22 +70,28 @@ class TaskUpdateView(MyLoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return context
 
 
-class TaskDeleteView(MyLoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(MyLoginRequiredMixin, MyUserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = "delete.html"
     success_url = reverse_lazy("tasks:list")
     success_message = _("Task deleted successfully!")
 
-    def form_valid(self, form):
-        if self.request.user == self.get_object().author:
-            return super(TaskDeleteView, self).form_valid(form)
-        else:
-            messages.add_message(
-                self.request,
-                messages.ERROR,
-                _("Task can only be deleted by it's author!"),
-            )
-        return redirect(self.success_url)
+    no_permission_url = "/tasks"
+    no_permission_message = _("Task can only be deleted by it's author!")
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+    # def form_valid(self, form):
+    #     if self.request.user == self.get_object().author:
+    #         return super(TaskDeleteView, self).form_valid(form)
+    #     else:
+    #         messages.add_message(
+    #             self.request,
+    #             messages.ERROR,
+    #             _("Task can only be deleted by it's author!"),
+    #         )
+    #     return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

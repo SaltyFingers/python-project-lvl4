@@ -43,6 +43,9 @@ class UserUpdateView(SuccessMessageMixin,
     success_url = "/users"
     success_message = _("User updated successfully!")
 
+    no_permission_url = "/users"
+    no_permission_message = _("You do not have rights to changhe another user")
+
     def test_func(self):
         return self.request.user == self.get_object()
 
@@ -63,7 +66,7 @@ class UserDeleteView(SuccessMessageMixin,
     success_message = _("User deleted successfully!")
 
     no_permission_url = "/users"
-    no_permission_message = 'You do not have rights to changhe another user'
+    no_permission_message = _("You do not have rights to changhe another user")
 
     def test_func(self):
         return self.request.user == self.get_object()
