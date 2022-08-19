@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class MyLoginRequiredMixin(LoginRequiredMixin):
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.add_message(
@@ -19,7 +19,7 @@ class MyLoginRequiredMixin(LoginRequiredMixin):
 
 
 class MyUserPassesTestMixin(UserPassesTestMixin):
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not self.get_test_func()():
             messages.add_message(
