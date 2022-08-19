@@ -73,8 +73,8 @@ class TestTasks(TestCase):
             "description": "some description",
             "status": self.status1.pk,
             "labels": [self.label1.pk, self.label3.pk],
-            "executor": self.user2.pk,
-        }
+            "executor": self.user2.pk
+            }
 
         response = self.client.post(reverse("tasks:create"),
                                     new_task, follow=True)
@@ -88,6 +88,24 @@ class TestTasks(TestCase):
         self.assertContains(response, _("Task created successfully!"))
         self.assertTrue(created_task.pk == 4)
         self.assertTrue(created_task.author_id == self.user1.pk)
+
+    def test_create_task_without_executor(self):
+        self.client.force_login(self.user1)
+
+        new_task = {
+            "name": "TaskTask",
+            "description": "some description",
+            "status": self.status1.pk,
+            "labels": [self.label1.pk, self.label3.pk],
+            }
+
+        response = self.client.post(reverse("tasks:create"),
+                                    new_task, follow=True)
+
+        created_task = Task.objects.last()
+
+        self.assertRedirects(response, reverse("tasks:list"))
+        self.assertTrue(created_task.executor is None)
 
     def test_update_task(self):
         self.client.force_login(self.user3)

@@ -37,7 +37,7 @@
         </td>
         <td>{{ task.status }}</td>
         <td>{{ task.author }}</td>
-        <td>{{ task.executor }}</td>
+        <td>{{ task.executor|default_if_none:"" }}</td>
         <td>{{ task.created_at }}</td>
         <td>
             <a href="{% url 'tasks:update' task.id %}">{% translate "Update" %}</a>
