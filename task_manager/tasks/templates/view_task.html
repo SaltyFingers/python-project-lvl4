@@ -22,7 +22,7 @@
     </div>
     <div class="row p-1">
       <div class="col">{% translate "Executor" %}</div>
-      <div class="col">{{ client.user|default_if_none:"&nbsp;" }}</div>
+      <div class="col">{{ task.executor|default_if_none:"" }}</div>
     </div>
     <div class="row p-1">
       <div class="col">{% translate "Status" %}</div>

@@ -83,17 +83,6 @@ class TaskDeleteView(MyLoginRequiredMixin,
     def test_func(self):
         return self.request.user == self.get_object().author
 
-    # def form_valid(self, form):
-    #     if self.request.user == self.get_object().author:
-    #         return super(TaskDeleteView, self).form_valid(form)
-    #     else:
-    #         messages.add_message(
-    #             self.request,
-    #             messages.ERROR,
-    #             _("Task can only be deleted by it's author!"),
-    #         )
-    #     return redirect(self.success_url)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Delete task")
