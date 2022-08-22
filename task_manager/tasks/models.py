@@ -12,12 +12,12 @@ class Task(models.Model):
         max_length=100,
         null=False,
         unique=True,
-        verbose_name=_('Name')
+        verbose_name=_("Name")
     )
 
     description = models.TextField(
         null=False,
-        verbose_name=_('Description')
+        verbose_name=_("Description")
     )
 
     author = models.ForeignKey(
@@ -25,7 +25,7 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         null=True,
         related_name="tasks",
-        verbose_name=_('Author')
+        verbose_name=_("Author")
     )
 
     status = models.ForeignKey(
@@ -33,14 +33,14 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         null=True,
         related_name="tasks",
-        verbose_name=_('Status')
+        verbose_name=_("Status")
     )
 
     labels = models.ManyToManyField(
         Label,
         related_name="tasks",
         blank=True,
-        verbose_name=_('Labels')
+        verbose_name=_("Labels")
     )
 
     executor = models.ForeignKey(
@@ -48,7 +48,7 @@ class Task(models.Model):
         null=True,
         related_name="works_on",
         blank=True,
-        verbose_name=_('Executor')
+        verbose_name=_("Executor")
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

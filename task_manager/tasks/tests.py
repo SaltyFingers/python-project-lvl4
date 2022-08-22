@@ -74,7 +74,7 @@ class TestTasks(TestCase):
             "status": self.status1.pk,
             "labels": [self.label1.pk, self.label3.pk],
             "executor": self.user2.pk
-            }
+        }
 
         response = self.client.post(reverse("tasks:create"),
                                     new_task, follow=True)
@@ -97,7 +97,7 @@ class TestTasks(TestCase):
             "description": "some description",
             "status": self.status1.pk,
             "labels": [self.label1.pk, self.label3.pk],
-            }
+        }
 
         response = self.client.post(reverse("tasks:create"),
                                     new_task, follow=True)
